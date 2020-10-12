@@ -3,44 +3,44 @@
     <div>
       <p>This is a banner announcement. It is very important.</p>
     </div>
-    <b-carousel :pauseInfo="false">
-        <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
-            <section :class="`hero is-medium is-${carousel.color}`">
-                <div class="hero-body has-text-centered">
-                    <h1 class="title">{{carousel.text}}</h1>
-                </div>
-            </section>
-        </b-carousel-item>
+    <b-carousel :pause-info="false">
+      <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
+        <section :class="`hero is-medium is-${carousel.color}`">
+          <div class="hero-body has-text-centered">
+            <h1 class="title">{{ carousel.text }}</h1>
+          </div>
+        </section>
+      </b-carousel-item>
     </b-carousel>
     <section class="hero is-black">
-      <div class="hero-head">
-      </div>
+      <div class="hero-head" />
+      
       <div class="hero-body columns is-centered">
         <div class="container column is-half">
           <h1 class="title is-1">
-            {{heroMessage}}
+            {{ heroMessage }}
           </h1>
           <h1 class="subtitle">
-            {{heroSubtitle}}
+            {{ heroSubtitle }}
           </h1>
         </div>
       </div>
     </section>
     <b-carousel-list
-            :data="items"
-            :repeat="repeat">
+      :data="items"
+      :repeat="repeat">
       <template slot="item" slot-scope="props">
         <div class="card">
           <div class="card-image">
             <figure class="image">
-              <img :src="props.list.image"/>
+              <img :src="props.list.image">
             </figure>
           </div>
           <div class="card-content">
             <div class="content">
-              <p class="title is-6">{{props.list.title}}</p>
-              <p>{{props.list.message}}</p>
-              <p class="subtitle is-8">{{props.list.user}}</p>
+              <p class="title is-6">{{ props.list.title }}</p>
+              <p>{{ props.list.message }}</p>
+              <p class="subtitle is-8">{{ props.list.user }}</p>
             </div>
           </div>
         </div>
@@ -64,14 +64,14 @@
     <section>
       <div class="container columns">
         <template v-for="item in infoCards">
-          <div class="column card is-half" :key="item.index">
+          <div :key="item.index" class="column card is-half">
             <div class="card-image">
               <figure class="image is-4by3">
-                <img :src="item.image"/>
+                <img :src="item.image">
               </figure>
             </div>
             <div class="card-content">
-              {{item.message}}
+              {{ item.message }}
             </div>
           </div>
         </template>
@@ -81,12 +81,15 @@
 </template>
 
 <script>
-import Navbar from '@/components/global/GamblerNavbar'
+// import Navbar from '@/components/global/GamblerNavbar'
 export default {
+  components: {
+    //'gam-navbar': Navbar
+  },
   data () {
     return {
-      heroMessage: 'BOOK YOUR NEXT TRIP WITH GAMBLERS EXPRESS, INC.',
-      heroSubtitle: 'We\'re here to ensure your next trip to the casino exceeds your expectations',
+      heroMessage: 'BOOK YOUR NEXT TRIP WITH CHARTER EXPRESS',
+      heroSubtitle: 'We\'re here to ensure your next trip exceeds your expectations',
       carousels: [
         { text: 'Slide 1', color: 'primary' },
         { text: 'Slide 2', color: 'info' },
@@ -169,9 +172,6 @@ export default {
       ]
     }
   },
-  components: {
-    'gam-navbar': Navbar
-  }
 }
 </script>
 

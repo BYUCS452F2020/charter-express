@@ -1,5 +1,5 @@
 <template>
-    <div>
-        <p>Services Placeholder</p>
-    </div>
+  <div>
+    <p>Services Placeholder</p>
+  </div>
 </template>

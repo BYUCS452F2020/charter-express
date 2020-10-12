@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <gam-navbar></gam-navbar>
+    <gam-navbar />
     <div>
       <!-- {{this.$router.currentRoute.path}} -->
-      <router-view/>
+      <router-view />
     </div>
-    <gam-footer></gam-footer>
+    <gam-footer />
   </div>
 </template>
 

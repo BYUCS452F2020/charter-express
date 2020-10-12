@@ -1,5 +1,5 @@
 <template>
-    <div>
-        <p>Blog Placeholder</p>
-    </div>
+  <div>
+    <p>Blog Placeholder</p>
+  </div>
 </template>
