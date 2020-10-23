@@ -36,7 +36,7 @@
 
       <template slot="end">
         <b-navbar-item tag="div">
-          <div class="buttons">
+          <div v-if="!$store.state.isUserLoggedIn" class="buttons">
             <a class="button is-primary"
                @click="registerModal()">
               <strong>Sign up</strong>
@@ -44,6 +44,12 @@
             <a class="button is-light"
                @click="loginModal()">
               Log in
+            </a>
+          </div>
+          <div v-else class="buttons">
+            <a class="button is-primary"
+               @click="logout()">
+              Log out
             </a>
           </div>
         </b-navbar-item>
@@ -77,7 +83,12 @@ export default {
         hasModalCard: true,
         customClass: 'custom-class custom-class-2',
         trapFocus: true
-      })}
+      })},
+    logout(){
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$store.dispatch('setAccessLevel', 0)
+    }
   }
 }
 </script>
