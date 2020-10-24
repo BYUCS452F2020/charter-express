@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Services from '@/components/Services'
 import Upcoming from '@/components/Upcoming'
 import Contact from '@/components/Contact'
+import Charters from '@/components/Charters'
 import Blog from '@/components/Blog'
 
 Vue.use(Router)
@@ -20,6 +21,11 @@ export default new Router({
       path: '/services',
       name: 'Services',
       component: Services
+    },
+    {
+      path: '/charters',
+      name: 'Charters',
+      component: Charters
     },
     {
       path: '/upcoming',
