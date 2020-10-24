@@ -8,7 +8,7 @@
         @click="$emit('close')" />
     </header>
     <section class="modal-card-body">
-      <b-field v-if="isCompany" label="Company Name">
+      <b-field v-if="isCompany == 'true'" label="Company Name">
         <b-input
           v-model="companyName"
           placeholder="Company Name"
@@ -66,7 +66,6 @@
           Company
         </b-radio>
       </div>
-      <b-checkbox>Remember me</b-checkbox>
     </section>
     <footer class="modal-card-foot">
       <button class="button" type="button" @click="$emit('close')">Close</button>

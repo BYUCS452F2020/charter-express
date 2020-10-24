@@ -24,8 +24,6 @@
           placeholder="Your password"
           required />
       </b-field>
-      
-      <b-checkbox>Remember me</b-checkbox>
 
       <b-notification
         type="is-danger"
