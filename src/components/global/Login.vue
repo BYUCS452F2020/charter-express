@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     async sendLoginRequest () {
-      console.log("ummm")
       try{
         const response = await AuthenticationService.login({
           username: this.username,
