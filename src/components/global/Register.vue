@@ -66,6 +66,11 @@
           Company
         </b-radio>
       </div>
+      <b-message
+        v-if="error !== ''"
+        type="is-danger">
+        {{ error }}
+      </b-message>
     </section>
     <footer class="modal-card-foot">
       <button class="button" type="button" @click="$emit('close')">Close</button>
@@ -85,11 +90,13 @@ export default {
       email: null,
       username: '',
       password: '',
-      companyName: null
+      companyName: null,
+      error: ''
     }
   },
   methods: {
     async sendRegisterRequest () {
+      this.error=''
       try{
         const response = await AuthenticationService.registerPerson({
           type: this.isCompany ? 'Employee' : 'Customer',
@@ -100,7 +107,7 @@ export default {
           access_level: this.isCompany ? 1 : 0
         })
         this.$store.dispatch('setToken', 'faketoken')
-        this.$store.dispatch('setUser', response.data.user)
+        this.$store.dispatch('setUser', {username: response.data.user, company_id: response.data.company_id})
         this.$store.dispatch('setAccessLevel', response.data.access_level)
         this.$emit('close')
       }catch(error){

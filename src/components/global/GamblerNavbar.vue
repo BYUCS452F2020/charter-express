@@ -22,6 +22,11 @@
             Upcoming Trips
           </router-link>
         </b-navbar-item>
+        <b-navbar-item v-if="$store.state.access_level>0">
+          <router-link to="CreateCharter">
+            Create a Charter
+          </router-link>
+        </b-navbar-item>
         <b-navbar-item>
           <router-link to="Contact">
             Contact Us
@@ -88,6 +93,7 @@ export default {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
       this.$store.dispatch('setAccessLevel', 0)
+      this.$router.push({name: 'Home'})
     }
   }
 }

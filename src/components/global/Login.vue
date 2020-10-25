@@ -25,14 +25,11 @@
           required />
       </b-field>
 
-      <b-notification
-        type="is-danger"
-        has-icon
-        :value="error"
-        aria-close-label="Close notification"
-        role="alert">
+      <b-message
+        v-if="error !== ''"
+        type="is-danger">
         {{ error }}
-      </b-notification>
+      </b-message>
     </section>
     <footer class="modal-card-foot">
       <button class="button" type="button" @click="$emit('close')">Close</button>
@@ -53,13 +50,14 @@ export default {
   },
   methods: {
     async sendLoginRequest () {
+      this.error=''
       try{
         const response = await AuthenticationService.login({
           username: this.username,
           password: this.password
         })
         this.$store.dispatch('setToken', 'faketoken')
-        this.$store.dispatch('setUser', response.data.user)
+        this.$store.dispatch('setUser', {username: response.data.username, company: response.data.company})
         this.$store.dispatch('setAccessLevel', response.data.access_level)
         this.$emit('close')
       }catch(error){

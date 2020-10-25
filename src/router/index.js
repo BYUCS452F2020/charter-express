@@ -6,6 +6,7 @@ import Upcoming from '@/components/Upcoming'
 import Contact from '@/components/Contact'
 import Charters from '@/components/Charters'
 import Blog from '@/components/Blog'
+import CreateCharter from '@/components/CreateCharter'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/blog',
       name: 'Blog',
       component: Blog
+    },
+    {
+      path: '/createcharter',
+      name: 'CreateCharter',
+      component: CreateCharter
     }
   ]
 })
