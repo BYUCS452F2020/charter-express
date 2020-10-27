@@ -11,15 +11,15 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">{{ charter.message }}</p>
-              <p class="subtitle is-6">{{ charter.message }}</p>
+              <p class="title is-4">Charter Company: {{ charter.company_name }}</p>
+              <p class="subtitle is-6">Seats Available: {{ charter.seats_available }}</p>
             </div>
           </div>
 
           <div class="content">
-            {{ charter.message }}
+            ${{ charter.cost }}
             <br />
-            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            <time datetime="2016-1-1">{{ charter.start_date }} - {{ charter.end_date }}</time>
           </div>
         </div>
       </div>
@@ -28,14 +28,33 @@
   <div v-else class="pa-3">No Matches Found</div>
 </template>
 <script>
-import axios from "axios";
+import charterService from "../services/CharterService";
 export default {
   name: "Charters",
   data: () => ({
-    charters: [{ message: "Foo" }, { message: "Bar" }]
+    charters: [
+      {
+        id: 1,
+        start_date: "10/27/2020",
+        end_date: "10/30/2020",
+        seats_available: 45,
+        cost: 200,
+        company_id: 1,
+        company_name: "exampleCompany"
+      },
+      {
+        id: 2,
+        start_date: "11/1/2020",
+        end_date: "11/12/2020",
+        seats_available: 50,
+        cost: 300,
+        company_id: 1,
+        company_name: "exampleCompany"
+      }
+    ]
   }),
   created() {
-    axios.get();
+    charterService.getAllCharters();
   },
   methods: {}
 };

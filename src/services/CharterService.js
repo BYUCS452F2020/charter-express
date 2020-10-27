@@ -7,7 +7,9 @@ export default {
   },
   submitCharter(data){
     return Api().post("/submit/charter", data)
+  },
+  getAllCharters(data){
+    return Api().post("/getAllCharters", data)
   }
-  
 
 }

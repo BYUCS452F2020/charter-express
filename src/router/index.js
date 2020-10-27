@@ -31,7 +31,7 @@ export default new Router({
     {
       path: '/upcoming',
       name: 'Upcoming',
-      component: Upcoming
+      component: Charters
     },
     {
       path: '/contact',
