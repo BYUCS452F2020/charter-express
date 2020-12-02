@@ -5,6 +5,7 @@ import Services from '@/components/Services'
 import Upcoming from '@/components/Upcoming'
 import Contact from '@/components/Contact'
 import Charters from '@/components/Charters'
+import SingleCharter from '@/components/SingleCharter'
 import Blog from '@/components/Blog'
 import CreateCharter from '@/components/CreateCharter'
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/charters',
       name: 'Charters',
       component: Charters
+    },
+    {
+      path: '/charter/:id',
+      name: 'SingleCharter',
+      component: SingleCharter
     },
     {
       path: '/upcoming',
