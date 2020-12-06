@@ -15,7 +15,7 @@
 
       <p>From {{ charter.start_date }} to {{ charter.end_date }}</p>
 
-      <p>Hurry! We've only got {{ charter.seats_available }} seats left at {{ charter.cost }} per person!</p>
+      <p>Hurry! We only have {{ charter.seats_available }} seats left at {{ charter.cost }} per person!</p>
 
       <div style="margin-top: 20px" class="buttons">
         <a class="button is-light"
@@ -70,7 +70,8 @@ export default {
   created() {
     let paths = window.location.pathname.split(/(.)*[/]/)
     charterService.getCharterById(paths[paths.length -1]).then(response => {
-      console.log(response.data.results);
+      console.log(response.data.results)
+      this.charter = response.data.results
     });
   },
   methods: {

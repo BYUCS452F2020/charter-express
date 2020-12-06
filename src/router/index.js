@@ -32,7 +32,8 @@ export default new Router({
     {
       path: '/charter/:id',
       name: 'SingleCharter',
-      component: SingleCharter
+      component: SingleCharter,
+      props: true
     },
     {
       path: '/upcoming',

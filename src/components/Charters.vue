@@ -5,7 +5,7 @@
     <li
       v-for="(charter, i) in charters"
       :key="i"
-      @click="$router.push('/charter/' + charter.id)"
+      @click="$router.push({path: '/charter/' + charter.id, props: {charter_id: charter.id}})"
     >
       <div class="card cardmargin">
         <div class="card-content">
