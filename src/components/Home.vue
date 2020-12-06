@@ -14,7 +14,7 @@
     </b-carousel>
     <section class="hero is-black">
       <div class="hero-head" />
-      
+
       <div class="hero-body columns is-centered">
         <div class="container column is-half">
           <h1 class="title is-1">

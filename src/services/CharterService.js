@@ -10,6 +10,9 @@ export default {
   },
   async getAllCharters(){
     return await Api().get("/charters")
+  },
+  async getCharterById(id) {
+    return await Api().get("/charters/" + id)
   }
 
 }
