@@ -9,7 +9,7 @@
     >
       <div class="card cardmargin">
         <div class="card-content">
-          <h1 class="title is-4">{{ charter.charter_title }}</h1>
+          <h1 class="title is-4">{{ charter.title }}</h1>
           <div class="media">
             <div class="media-content">
               <p class="subtitle is-4">
@@ -41,6 +41,7 @@
 </template>
 <script>
 import charterService from "../services/CharterService";
+import companyService from "../services/CompanyService";
 export default {
   name: "Charters",
   data: () => ({
@@ -53,7 +54,7 @@ export default {
         cost: 200,
         company_id: 1,
         company_name: "exampleCompany",
-        charter_title: "Southern Coast Cruise",
+        title: "Southern Coast Cruise",
         charter_locations: ["Houston", "New Orleans", "Miami"]
       },
       {
@@ -64,7 +65,7 @@ export default {
         cost: 300,
         company_id: 1,
         company_name: "exampleCompany",
-        charter_title: "East Coast Cruise",
+        title: "East Coast Cruise",
         charter_locations: ["New York", "Virginia Beach", "Myrtle Beach"]
       }
     ]
@@ -72,9 +73,25 @@ export default {
   created() {
     charterService.getAllCharters().then(response => {
       console.log(response.data.results);
+      this.charters=response.data.results
+      this.getCompanies().then(result =>{
+        this.charters = result
+        console.log(this.charters)
+      })
     });
+
   },
-  methods: {}
+  methods: {
+    async getCompanies () {
+      let temp = JSON.parse(JSON.stringify(this.charters))
+      for(let i=0; i< temp.length; i++){
+        let response = await companyService.getCompanyById(temp[i].company_id)
+        temp[i].company_name = response.data.company.name
+      }
+      console.log(temp)
+      return temp
+    }
+  }
 };
 </script>
 <style scoped>

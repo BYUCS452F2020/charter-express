@@ -71,12 +71,21 @@ export default {
     },
     async submitCharter() {
       CharterService.submitCharter({
+        title: this.title,
         start_date: this.start_date,
         end_date: this.end_date,
         company_id: this.$store.state.user.company.id,
         seats_available: this.seats_available,
-        cost: this.cost
+        cost: this.cost,
+        locations: [this.location]
       })
+      this.title= ''
+      this.start_date= null
+      this.end_date= null
+      this.seats_available= null
+      this.cost= null
+      this.location= null
+      this.loading= false
     }
   }
 }
