@@ -70,7 +70,6 @@ export default {
   created() {
     let paths = window.location.pathname.split(/(.)*[/]/)
     charterService.getCharterById(paths[paths.length -1]).then(response => {
-      console.log(response.data.results)
       this.charter = response.data.results
     });
   },
@@ -85,7 +84,8 @@ export default {
     submitPeopleToCharter: function() {
       let numToSubmit = this.$refs.numCharter.value
       if (numToSubmit > 0) {
-        //Do something here
+        alert("Awesome we've added " + numToSubmit + " to our trip!")
+        this.$refs.popUp.style.display = "none"
       } else {
         alert("Please put a positive number of people")
       }
